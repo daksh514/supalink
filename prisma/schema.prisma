@@ -20,4 +20,5 @@ model User {
   firstName     String
   lastName      String
   profileImage  String
+  domainSlug    String? @unique
 }

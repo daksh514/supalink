@@ -6,7 +6,7 @@ import { Toaster } from "react-hot-toast";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Suppalink",
+  title: "Supalink",
   description: "Get your supalink, and access every tool a creator needs in link-in-bio tool!",
 };
 

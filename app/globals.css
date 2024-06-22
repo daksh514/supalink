@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+  *{
+    font-family: var("--font-poppins");
+  }
   .widthContainer {
     @apply max-w-4xl px-4 md:px-8 mx-auto
   }
