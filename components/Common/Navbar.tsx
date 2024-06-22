@@ -10,7 +10,7 @@ function Navbar() {
         <div className="flex-none">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a className="font-semibold">Contact</a>
+              <a className="font-semibold btn bg-opacity-10">Contact</a>
             </li>
             
           </ul>

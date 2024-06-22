@@ -9,7 +9,8 @@ export async function signUpNewsletter(email: string){
             'Authorization': 'Bearer ' + process.env.MAILERLITE_API_KEY
         },
         body: JSON.stringify({
-            email: email
+            email: email,
+            groups: [process.env.MAILERLITE_GROUP_ID]
         })
     })
     if (response.status === 200 || response.status === 201) {
