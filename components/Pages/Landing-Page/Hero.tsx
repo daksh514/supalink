@@ -46,7 +46,7 @@ function Hero() {
             onChange={(e) => setEmailInput(e.target.value)}
           />
           <button
-            className="btn join-item rounded-r-full input-bordered border-2 px-5"
+            className="btn btn-primary bg-opacity-55 join-item rounded-r-full input-bordered border-2 px-5"
             onClick={onClick}
           >
             {!isLoading ? 'Join' : <Loader2 className="animate-spin"/>}

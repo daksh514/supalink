@@ -33,8 +33,8 @@ const config: Config = {
           "neutral": "F0EAD6",
 
           "base-100": "#FFFFFF",
-          "base-200": "#EEE8AA",  // Pale Goldenrod (a light beige)
-          "base-300": "#D2B48C",
+          "base-200": "#F8F8F8",  // Pale Goldenrod (a light beige)
+          "base-300": "#F0F0F0",
 
           "info": "#FFA07A",
 
