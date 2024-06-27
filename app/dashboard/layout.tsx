@@ -14,7 +14,7 @@ async function layout({children}:{children: React.ReactNode}) {
     <div>
       <div className="flex">
       <Sidebar  user={user}/>
-      <div>
+      <div className='grow'>
         {children}
 
       </div>

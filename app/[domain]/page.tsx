@@ -1,8 +1,17 @@
+import { findDataBySlug } from '@/actions/slug-actions'
 import React from 'react'
 
-function page() {
+async function page({params}:{params:{domain:string}}) {
+  const slug = params.domain
+  const sluData = await findDataBySlug(slug)
+  if(!sluData) return <h1>Sorry, this page doesn't exist.</h1>
   return (
-    <div>page</div>
+    <div>
+      <div className='widthContainer'>
+
+      <p>{sluData.firstName}</p>
+      </div>
+      </div>
   )
 }
 

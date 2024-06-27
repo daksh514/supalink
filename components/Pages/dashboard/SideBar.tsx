@@ -16,7 +16,7 @@ const Sidebar = ({user}:{user:any}) => {
 
   return (
     <div
-      className={`h-screen flex flex-col justify-between relative bg-base-200 shadow-lg  transition-all duration-300 ease-in-out transform ${
+      className={`h-screen flex flex-col justify-between relative bg-base-200   transition-all duration-300 ease-in-out transform ${
         isOpen ? "w-72" : "w-20"
       } p-4`}
     >

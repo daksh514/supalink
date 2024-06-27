@@ -10,7 +10,7 @@ function FormButton({
   className,
 }: {
   label: string;
-  className: string;
+  className?: string;
 }) {
   const { pending } = useFormStatus();
   return (
