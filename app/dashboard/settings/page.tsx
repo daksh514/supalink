@@ -11,9 +11,7 @@ async function page() {
   unstable_noStore()
   const { getUser } = getKindeServerSession();
   const user = (await getUser()) as KindeUser;
-  if (!user.id) return NextResponse.json({
-    message: "User not found"
-})
+ 
   const userData = await getUserByKindeId(user.id);
   return (
     <div className=" widthContainer pt-5 ">

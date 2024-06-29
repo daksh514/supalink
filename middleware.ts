@@ -1,7 +1,7 @@
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { NextResponse, type NextRequest } from "next/server";
 
-const protectedRoutes = ["/dashboard", "/dashboard/chooseslug"]
+const protectedRoutes = ["/dashboard","/dashboard/settings", "/dashboard/chooseslug"]
 
 export async function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl;
@@ -9,7 +9,7 @@ export async function middleware(request: NextRequest) {
         const { getUser } = getKindeServerSession()
         const kindeUser = await getUser()
 
-        if (!kindeUser) return NextResponse.redirect(new URL('/api/auth/login', request.url).toString())
+        if (!kindeUser || !kindeUser.id) return NextResponse.redirect(new URL('/api/auth/login', request.url).toString())
        
 
     }
