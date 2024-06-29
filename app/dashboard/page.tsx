@@ -32,8 +32,8 @@ async function page() {
             </div>
             <div className="flex flex-col gap-3 mt-4">
               {
-                user.links.map((link)=>(
-                  <LinksComp linkData={link}/>
+                user.links.map((link,index)=>(
+                  <LinksComp linkData={link} key={index}/>
                 ))
               }
             </div>
