@@ -1,9 +1,12 @@
 import { findDataBySlug } from "@/actions/slug-actions";
 import LinkComp from "@/components/Domain/LinkComp";
+import { unstable_noStore } from "next/cache";
 import Image from "next/image";
 import React from "react";
 
+
 async function page({ params }: { params: { domain: string } }) {
+  unstable_noStore()
   const slug = params.domain;
   const sluData = await findDataBySlug(slug);
   if (!sluData) return <h1>Sorry, this page doesnt exist.</h1>;
