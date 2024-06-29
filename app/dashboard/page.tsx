@@ -16,9 +16,9 @@ async function page() {
   noStore()
   const { getUser } = getKindeServerSession();
   const kindeUser = (await getUser()) as KindeUser;
-  if(!kindeUser.id) return {
+  if (!kindeUser.id) return {
     message: "User not found"
-  };
+};
   const user = await getUserByKindeId(kindeUser.id);
 
   if (!user?.domainSlug) {

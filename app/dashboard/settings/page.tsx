@@ -8,7 +8,9 @@ import React from "react";
 async function page() {
   const { getUser } = getKindeServerSession();
   const user = (await getUser()) as KindeUser;
-  
+  if (!user.id) return {
+    message: "User not found"
+};
   const userData = await getUserByKindeId(user.id);
   return (
     <div className=" widthContainer pt-5 ">
