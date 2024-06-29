@@ -16,7 +16,7 @@ import { NextResponse } from "next/server";
 async function page() {
   noStore()
   const { getUser } = getKindeServerSession();
-  const kindeUser = (await getUser());
+  const kindeUser = await getUser();
   if(!kindeUser) return redirect('/api/auth/login')
   const user = await getUserByKindeId(kindeUser.id as string);
 
