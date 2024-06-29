@@ -2,11 +2,13 @@ import { getUserByKindeId } from "@/actions/userActions";
 import SlugForm from "@/components/Pages/chooseSlug-Page/SlugForm";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/types";
+import { unstable_noStore } from "next/cache";
 import { redirect } from "next/navigation";
 import { NextResponse } from "next/server";
 import React from "react";
 
 async function page() {
+  unstable_noStore()
   const { getUser } = getKindeServerSession();
   const user = (await getUser()) as KindeUser;
   if (!user.id) return NextResponse.json({
