@@ -7,8 +7,8 @@ import React from "react";
 
 async function page() {
   const { getUser } = getKindeServerSession();
-  const user = (await getUser());
-  if(!user) return redirect('api/auth/login')
+  const user = (await getUser()) as KindeUser;
+  
   const userData = await getUserByKindeId(user.id);
   return (
     <div className=" widthContainer pt-5 ">

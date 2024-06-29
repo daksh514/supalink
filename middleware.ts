@@ -9,9 +9,9 @@ export async function middleware(request: NextRequest) {
         const { getUser } = getKindeServerSession()
         const kindeUser = await getUser()
 
-        if (!kindeUser) return NextResponse.redirect(new URL('/api/auth/login', request.url).toString())
+        if (!kindeUser || !kindeUser.id) return NextResponse.redirect(new URL('/api/auth/login', request.url).toString())
+       
 
-        
     }
     return NextResponse.next();
 }

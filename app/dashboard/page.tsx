@@ -15,8 +15,10 @@ import { unstable_noStore as noStore} from "next/cache";
 async function page() {
   noStore()
   const { getUser } = getKindeServerSession();
-  const kindeUser = (await getUser()) ;
-  if(!kindeUser) return redirect('/api/auth/login');
+  const kindeUser = (await getUser()) as KindeUser;
+  if(!kindeUser.id) return {
+    message: "User not found"
+  };
   const user = await getUserByKindeId(kindeUser.id);
 
   if (!user?.domainSlug) {
