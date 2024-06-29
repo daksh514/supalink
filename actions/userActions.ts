@@ -1,9 +1,11 @@
 "use server"
 
 import prisma from "@/utils/db";
+import { unstable_noStore as noStore} from "next/cache";
 
 
 export async function getUserByKindeId(userId: string) {
+  noStore()
   const user = await prisma.user.findUnique({
     where: {
       id: userId,
