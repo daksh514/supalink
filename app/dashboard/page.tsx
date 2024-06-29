@@ -18,7 +18,7 @@ async function page() {
   const { getUser } = getKindeServerSession();
   const kindeUser = (await getUser());
   if(!kindeUser) return redirect('/api/auth/login')
-  const user = await getUserByKindeId(kindeUser.id);
+  const user = await getUserByKindeId(kindeUser.id as string);
 
   if (!user?.domainSlug) {
     redirect("/chooseslug");

@@ -13,7 +13,7 @@ async function page() {
   const user = (await getUser());
   if(!user) return redirect('/api/auth/login')
  
-  const userData = await getUserByKindeId(user.id);
+  const userData = await getUserByKindeId(user.id as string);
   return (
     <div className=" widthContainer pt-5 ">
       <div className="">
