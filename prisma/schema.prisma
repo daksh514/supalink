@@ -27,4 +27,7 @@ model Link {
   User     User?   @relation(fields: [userId], references: [id])
   userId   String?
   showLink Boolean @default(true)
+  orderInList Int
+
+  createdAt DateTime @default(now())
 }

@@ -28,7 +28,7 @@ async function page() {
             <div className="w-3/4">
             <div>
               <h1>Edit Page Content</h1>
-              <NewLinkModal userId={user.id}/>
+              <NewLinkModal userId={user.id} userSlug={user.domainSlug}/>
             </div>
             <div className="flex flex-col gap-3 mt-4">
               {

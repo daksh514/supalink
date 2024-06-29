@@ -7,6 +7,15 @@ export async function findDataBySlug(slug: string) {
         where: {
             domainSlug: slug,
         },
+        select: {
+            firstName: true,
+            profileImage: true,
+            links: {
+                orderBy: {
+                    orderInList: "asc"
+                }
+            }
+        }
     });
 
     return slugData;

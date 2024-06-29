@@ -5,11 +5,11 @@ import FormButton from "../Common/FormButton";
 import { createLink } from "@/actions/linkActions";
 import toast from "react-hot-toast";
 
-function NewLinkModal({ userId }: { userId: string }) {
+function NewLinkModal({ userId, userSlug }: { userId: string, userSlug: string}) {
   const [linkTitleState, setLinkTitleState] = useState("");
   const [linkURLState, setLinkURLState] = useState("");
   async function createLinkAction(formData: FormData) {
-    const res = await createLink(formData, userId);
+    const res = await createLink(formData, userId, userSlug);
     if(res.status==="success"){
       (document.getElementById("my_modal_2") as HTMLDialogElement)?.close();
       toast.success(res.message);

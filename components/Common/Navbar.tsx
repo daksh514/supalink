@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 function Navbar() {
@@ -10,7 +11,7 @@ function Navbar() {
         <div className="flex-none">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a className="font-semibold btn bg-opacity-10">Contact</a>
+              <Link href={'/dashboard'} className="font-semibold btn bg-opacity-10">Get Started</Link>
             </li>
             
           </ul>

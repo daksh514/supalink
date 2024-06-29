@@ -1,5 +1,6 @@
 "use server"
 import prisma from '@/utils/db'
+import { revalidatePath } from 'next/cache'
 import * as zod from 'zod'
 
 const newLinkSchema = zod.object({
@@ -11,7 +12,26 @@ const newLinkSchema = zod.object({
     })
 })
 
-export async function createLink(formData: FormData, userId: string) {
+
+export async function getLinkById(id: string){
+    const link = await prisma.user.findUnique({
+        where: {
+            id: id,
+        },
+        select: {
+            links: {
+                orderBy: {
+                    orderInList: 'asc'
+                }
+            }
+        }
+    })
+
+    return link;
+}
+
+
+export async function createLink(formData: FormData, userId: string, userSlug: string) {
     const dataObject = {
         linkTitle: formData.get('linkTitle'),
         linkURL: formData.get('linkURL'),
@@ -24,13 +44,18 @@ export async function createLink(formData: FormData, userId: string) {
         }
     }
     try {
+        const links = await getLinkById(userId)
         await prisma.link.create({
             data: {
                 title: validated.data.linkTitle,
                 url: validated.data.linkURL,
-                userId: userId
+                userId: userId,
+                orderInList: links?.links ? links.links.length : 0
             },
         })
+
+        revalidatePath('/dashboard')
+        revalidatePath('/'+userSlug)
 
         return {
             status: 'success',
