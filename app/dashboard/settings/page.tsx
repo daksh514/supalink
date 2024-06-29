@@ -3,14 +3,15 @@ import SlugForm from "@/components/Pages/chooseSlug-Page/SlugForm";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/types";
 import { redirect } from "next/navigation";
+import { NextResponse } from "next/server";
 import React from "react";
 
 async function page() {
   const { getUser } = getKindeServerSession();
   const user = (await getUser()) as KindeUser;
-  if (!user.id) return {
+  if (!user.id) return NextResponse.json({
     message: "User not found"
-};
+})
   const userData = await getUserByKindeId(user.id);
   return (
     <div className=" widthContainer pt-5 ">

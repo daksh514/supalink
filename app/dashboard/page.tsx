@@ -10,15 +10,16 @@ import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/types";
 import { redirect } from "next/navigation";
 import React from "react";
 import { unstable_noStore as noStore} from "next/cache";
+import { NextResponse } from "next/server";
 
 
 async function page() {
   noStore()
   const { getUser } = getKindeServerSession();
   const kindeUser = (await getUser()) as KindeUser;
-  if (!kindeUser.id) return {
+  if (!kindeUser.id) return NextResponse.json({
     message: "User not found"
-};
+})
   const user = await getUserByKindeId(kindeUser.id);
 
   if (!user?.domainSlug) {
