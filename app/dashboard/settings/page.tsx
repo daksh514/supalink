@@ -11,6 +11,7 @@ async function page() {
   unstable_noStore()
   const { getUser } = getKindeServerSession();
   const user = (await getUser()) as KindeUser;
+  if(!user) return redirect('/api/auth/login')
  
   const userData = await getUserByKindeId(user.id);
   return (
