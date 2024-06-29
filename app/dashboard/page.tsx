@@ -4,16 +4,19 @@ import NewLinkModal from "@/components/Custom/NewLinkModal";
 import LinksComp from "@/components/Pages/dashboard/LinksComp";
 import SideBar from "@/components/Pages/dashboard/SideBar";
 import {
-  LogoutLink,
   getKindeServerSession,
 } from "@kinde-oss/kinde-auth-nextjs/server";
 import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/types";
 import { redirect } from "next/navigation";
 import React from "react";
+import { unstable_noStore as noStore} from "next/cache";
+
 
 async function page() {
+  noStore()
   const { getUser } = getKindeServerSession();
-  const kindeUser = (await getUser()) as KindeUser;
+  const kindeUser = (await getUser()) ;
+  if(!kindeUser) return redirect('/api/auth/login');
   const user = await getUserByKindeId(kindeUser.id);
 
   if (!user?.domainSlug) {
