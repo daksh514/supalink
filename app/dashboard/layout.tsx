@@ -6,10 +6,9 @@ import { KindeUser } from '@kinde-oss/kinde-auth-nextjs/types'
 import React from 'react'
 
 async function layout({children}:{children: React.ReactNode}) {
-  const {getUser} = getKindeServerSession()
-  const kindeUser = await getUser()  as KindeUser
+  
 
-  const user = await getUserByKindeId(kindeUser.id)
+  const user = await getUserByKindeId()
   return (
     <div>
       <div className="flex">

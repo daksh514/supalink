@@ -9,17 +9,14 @@ import React from "react";
 
 async function page() {
   unstable_noStore()
-  const { getUser } = getKindeServerSession();
-  const user = await getUser();
-  if(!user) return redirect('/api/auth/login')
  
-  const userData = await getUserByKindeId(user.id as string);
+  const userData = await getUserByKindeId();
   return (
     <div className=" widthContainer pt-5 ">
       <div className="">
         <h1 className="label text-sm font-semibold">Update Page Link</h1>
         <SlugForm
-          userId={user.id}
+          userId={userData?.id as string}
           btnLabel="Update link"
           defaultInputValue={userData?.domainSlug as string}
           isWFull
