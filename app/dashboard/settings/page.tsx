@@ -10,7 +10,7 @@ import React from "react";
 async function page() {
   unstable_noStore()
   const { getUser } = getKindeServerSession();
-  const user = (await getUser()) as KindeUser;
+  const user = (await getUser());
   if(!user) return redirect('/api/auth/login')
  
   const userData = await getUserByKindeId(user.id);
